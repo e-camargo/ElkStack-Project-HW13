@@ -93,6 +93,7 @@ As defined in the
 
 \roles
 metricbeat-playbook.yml (hosts: webservers)
+and
 filebeat-playbook.yml (hosts: webservers)
 
 and in
