@@ -51,7 +51,8 @@ Only the JUMP BOX and ELK-VM01 virtual machines can accept connections from the 
 
 IP addresses:
 
-67.176.130.63 (i.e., "the internet/home host public ip")
+67.176.130.63 (i.e., "the internet/home host public ip") 
+and 
 13.91.134.90 (i.e., "the Load Balancer's Public, Frontend IP")
 
 
