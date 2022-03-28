@@ -147,11 +147,7 @@ RedTeamAdmin@RedTeam-JumpBox-01:~/Ansible-ymls$ sudo docker cp /home/RedTeamAdmi
 
 - _Which file do you update to make Ansible run the playbook on a specific machine? The "/etc/ansible/hosts" file.
 
-ansible.cfg:
-
-[defaults]
-# some basic default values...
-#inventory      = /etc/ansible/hosts
+ansible.cfg: #inventory      = /etc/ansible/hosts
 
 _How do I specify which machine to install the ELK server on versus which to install Filebeat on?
 
