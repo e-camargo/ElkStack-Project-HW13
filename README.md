@@ -111,8 +111,8 @@ We have installed the following Beats on these machines:
 10.0.0.6 Web-2
 10.0.0.7 Web-3
 
--- ElkStack-Project-HW13\Diagrams
-\Filebeat_Install_screenshot
+-- ElkStack-Project-HW13\Diagrams\Filebeat_Install_screenshot
+and
 \Metricbeat_Install_screenshot
 
 These Beats allow us to collect the following information from each machine:
@@ -130,14 +130,14 @@ SSH into the control node and follow the steps below:
 [Example]
 
 filebeat-playbook.yml (hosts: webservers)
+and
 filebeat-config.yml (setup.kibana: host: "Elk-VM01:5601", output.elasticsearch: hosts: ["Elk-VM01:9200"])
 
 - Run the playbook, and navigate to the web servers to check that the installation worked as expected.
 
 NOTE: Included in this repo,
 
--- ElkStack-Project-HW13\Linux
-\QueryWebSrvDockCont.sh
+-- ElkStack-Project-HW13\Linux\QueryWebSrvDockCont.sh
 
 which will output the running Docker containers on your web servers from your Ansible container within your "jump box".
 
