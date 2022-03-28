@@ -66,47 +66,6 @@ A summary of the access policies in place can be found in the table below.
 | Elk-VM01      | Yes (TCP 5601)      | 67.176.130.63 (i.e., "the internet/home host public ip")       |
 | Web-1,2 and 3 | Yes (HTTP)          | 13.91.134.90 (i.e., "the Load Balancer's Public, Frontend IP") |
 
-
--- RedTeam-Home-SSH-JumpBox01-Allow-Rule:
-
-Source IP addresses/CIDR ranges: 67.176.130.63 (i.e., "the internet/home host public ip")
-Source Port ranges:*
-Destination IP addresses/CIDR ranges: Private IP address for RedTeam-JumpBox-01
-Service:ssh
-Action:Allow
-
--- TCP5601-Home-ElkStack-VM01:
-
-Source IP addresses/CIDR ranges: 67.176.130.63 (i.e., "the internet/home host public ip")
-Source Port ranges:*
-Destination: 10.1.0.4
-Service:TCP
-Custom:5601
-Action:Allow
-
--- HTTP-LoadBalancerToRedTeam-VirtualNetwork-01:
-
-Source IP addresses/CIDR ranges: 13.91.134.90 (i.e., "the Load Balancer's Public, Frontend IP")
-Source Port ranges:*
-Destination: VirtualNetwork
-Service:HTTP
-Action:Allow
-
---- RedTeam-LoadBalancer-LoadBalancingRule:
-
---- including a Health Probe:
----> Port: 80 (choose TCP)
----> Backend Port: 80
----> Session Persistence: Client IP and protocol
-
----- HTTP-HomeToRedTeam-VirtualNetwork-01:
-
-Source IP addresses/CIDR ranges: 67.176.130.63 (i.e., "the internet/home host public ip")
-Source Port ranges:*
-Destination: VirtualNetwork
-Service:HTTP
-Action:Allow
-
 ### Elk Configuration
 
 Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because...
