@@ -5,22 +5,7 @@ Homework: GitHub Fundamentals and Project 13 Submission
 
 The files in this repository were used to configure the network depicted below.
 
--- ElkStack-Project-HW13\Diagrams
-\ElkProjectDiagram.drawio
-
--- ElkStack-Project-HW13\Ansible
-ansible.cfg
-hosts
-
-\roles
-metricbeat-playbook.yml
-install-elk-playbook.yml
-filebeat-playbook.yml
-pentest-playbook.yml
-
-\files
-metricbeat-config.yml
-filebeat-config.yml
+-- ElkStack-Project-HW13\Diagrams\ElkProjectDiagram.drawio
 
 These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above (e.g., ElkProjectDiagram.drawio). Alternatively, select portions of the Playbook YAMLS may be used to install only certain pieces of it, such as Filebeat:
 
