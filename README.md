@@ -156,35 +156,15 @@ ansible.cfg:
 _How do I specify which machine to install the ELK server on versus which to install Filebeat on?
 
 filebeat-playbook.yml (hosts: webservers)
+and
 install-elk-playbook.yml (hosts: hosts: elk)
-
-/etc/ansible/hosts:
-
-[webservers]
-10.0.0.5 ansible_python_interpreter=/usr/bin/python3
-10.0.0.6 ansible_python_interpreter=/usr/bin/python3
-10.0.0.7 ansible_python_interpreter=/usr/bin/python3
-
-[elk]
-10.1.0.4 ansible_python_interpreter=/usr/bin/python3
 
 - _Which URL do you navigate to in order to check that the ELK server is running?
 
--- run ansible-playbook /etc/ansible/roles/install-elk-playbook.yml
--- test by SSH to ElkStack-VM01 and execute: sudo docker ps
-
-CONTAINER ID   - a7ea7a28e9cb
-IMAGE          - sebp/elk:761
-COMMAND        - "/usr/local/bin/star…"
-CREATED        - Up 2 minutes
-STATUS         - Exited (0) 10 seconds ago
-PORTS          - 0.0.0.0:5044->5044/tcp, 0.0.0.0:5601->5601/tcp, 0.0.0.0:9200->9200/tcp, 9300/tcp
-NAMES          - elk
-
--- URL (Where the IP is the Elk-VM01 virtual machine public IP):
-http://20.25.84.179:5601/app/kibana
+-- URL (Where the IP is the Elk-VM01 virtual machine public IP): http://20.25.84.179:5601/app/kibana
 
 _As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
 
 (1) run ansible-playbook /etc/ansible/roles/filebeat-playbook.yml
+and
 (2) run ansible-playbook /etc/ansible/roles/metricbeat-playbook.yml
