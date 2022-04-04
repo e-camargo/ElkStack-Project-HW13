@@ -3,15 +3,12 @@ Homework: GitHub Fundamentals and Project 13 Submission
 
 ## Automated ELK Stack Deployment
 
-The files in this repository were used to configure the network depicted below.
-
 -- ElkStack-Project-HW13\Diagrams\ElkProjectDiagram.drawio
 
-These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above (e.g., ElkProjectDiagram.drawio). Alternatively, select portions of the Playbook YAMLS may be used to install only certain pieces of it, such as Filebeat:
-
--- filebeat-playbook.yml and its corresponding filebeat-config.yml
+These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above (e.g., ElkProjectDiagram.drawio). Alternatively, select portions of the Playbook YAMLS may be used to install only certain pieces of it, such as Filebeat. For example, filebeat-playbook.yml and its corresponding filebeat-config.yml.
 
 This document contains the following details:
+
 - Description of the Topology
 - Access Policies
 - ELK Configuration
