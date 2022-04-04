@@ -5,16 +5,16 @@ Homework: GitHub Fundamentals and Project 13 Submission
 
 -- ElkStack-Project-HW13\Diagrams\ElkProjectDiagram.drawio
 
-These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above (e.g., ElkProjectDiagram.drawio). Alternatively, select portions of the Playbook YAMLS may be used to install only certain pieces of it, such as Filebeat. For example, filebeat-playbook.yml and its corresponding filebeat-config.yml.
+These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above (e.g., ElkProjectDiagram.drawio) or alternatively, select portions of the Playbook YAMLS may be used to install only certain pieces of it, such as Filebeat. For example, filebeat-playbook.yml and its corresponding filebeat-config.yml.
 
 This document contains the following details:
 
 - Description of the Topology
 - Access Policies
 - ELK Configuration
-  - Beats in Use
-  - Machines Being Monitored
-- How to Use the Ansible Build
+  - Beats in use
+  - Machines being monitored
+- How to use the Ansible build
 
 ### Description of the Topology
 
@@ -22,7 +22,7 @@ The main purpose of this network is to expose a load-balanced and monitored inst
 
 A "jump box" permits segmentation between administrative functions of the network. And with the use of SSH Key Pair Authentication, the "jump box" secures and limits administrative authentication to the network.
 
-An ELK Stack implementation facilitates log analysis and application and system performance analytics:
+An ELK Stack implementation facilitates log, application and system performance analytics:
 
 -- Metricbeat collects metrics on the Operating System and running services (e.g., CPU, Memory, HTTP traffic, etc.).
 -- Filebeat is an agent that serves as a log aggregator that in this network ingests logs to Elasticsearch.
@@ -38,11 +38,7 @@ The configuration details of each machine may be found below.
 
 ### Access Policies
 
-The machines on the internal network are not exposed to the public Internet.
-
-Machines within the network can only be accessed in accordance to Inbound Security Rules defined within the Network Security Groups.
-
-Only the JUMP BOX is permitted remote login and command line execution from the Internet. Access to this machine is enforced by Azure's Network Security Group to allow connections only from IP addresses: 67.176.130.63 (i.e., "the internet/home host public ip"). 
+Exposure to the machines on the internal network from the public Internet is by design and in accordance to inbound security rules. Only the JUMP BOX is permitted remote login and command line execution from the Internet. Access to this machine is enforced by Azure's Network Security Group to allow connections only from IP addresses: 67.176.130.63 (i.e., "the internet/home host public ip"). 
 
 A summary of the access policies in place can be found in the table below.
 
@@ -54,7 +50,7 @@ A summary of the access policies in place can be found in the table below.
 
 ### Elk Configuration
 
-Ansible automated the configuration of the ELK Stack setu-up and the DVWA web server environment, providing a scalable standardization of settings and versions.
+Ansible automated the configuration of the ELK Stack setu-up, providing a scalable standardization of settings and versions.
 
 The Elk playbook orchestrates the following tasks:
 
@@ -64,12 +60,8 @@ The Elk playbook orchestrates the following tasks:
 - ... Enables Docker Service on boot
 - ... Publishes Elk TCP port ranges
 
-The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
+Target Machines & Beats
 
--- ElkStack-Project-HW13\Diagrams
-\ElkDockerPS
-
-### Target Machines & Beats
 The ELK server is configured to monitor:
 
 [webservers]
@@ -77,13 +69,7 @@ The ELK server is configured to monitor:
 10.0.0.6 Web-2
 10.0.0.7 Web-3
 
--- ElkStack-Project-HW13\Diagrams\Filebeat_Install_screenshot
-and
-\Metricbeat_Install_screenshot
-
-These Beats allow us to collect the following information from each machine:
-
-Metricbeat allows us to analyze spikes in CPU utilization when running "apt-get update" for example. We can also analyze visual representations of granular details on HTTP traffic patterns, from country destinations to the types Operating Systems of the sources reaching our web servers.
+With Filebeat and Metricbeat we can analyze spikes in CPU utilization for example. We can also analyze visual representations of granular details on HTTP traffic patterns, from country destinations to the types Operating Systems accessing web servers.
 
 ### Using the Playbook
 In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned:
