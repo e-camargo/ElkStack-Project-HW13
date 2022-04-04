@@ -73,47 +73,33 @@ The ELK server is configured to monitor:
 - 10.0.0.7 Web-3
 
 ### Using the Playbook
-In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned:
+In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned (in this project, it is the Jump-Box):
 
-SSH into the control node and follow the steps below:
+SSH into the control node:
 
-- Copy the Playbook YAML and if applicable its corresponding config file to Jump Box Ansible container.
-- Update the Playbook YAML and the Config with key values.
-
-[Example]
-
-filebeat-playbook.yml (hosts: webservers)
-and
-filebeat-config.yml (setup.kibana: host: "Elk-VM01:5601", output.elasticsearch: hosts: ["Elk-VM01:9200"])
-
+- Copy the Playbook YAML and its corresponding config file to the Jump-Box Ansible container.
+- Update the Playbook YAML and the config file with the values pertinent to your network.
 - Run the playbook, and navigate to the web servers to check that the installation worked as expected.
 
 NOTE: Included in this repo,
 
 -- ElkStack-Project-HW13\Linux\QueryWebSrvDockCont.sh
 
-which will output the running Docker containers on your web servers from your Ansible container within your "jump box".
+When executed from your Jump-Box' container, it will output to the terminal the status of the Docker containers on each of your web servers.
 
-- _Which file is the playbook? Where do you copy it?
+File Details:
 
-RedTeamAdmin@RedTeam-JumpBox-01:~/Ansible-ymls$ sudo docker cp /home/RedTeamAdmin/Ansible-ymls/roles/filebeat-playbook.yml 60d5404ded25:/etc/ansible/roles/
+- filebeat-playbook.yml (located, /etc/ansible/roles/): Filebeat playbook
+- Hosts (located, "/etc/ansible/"): Ansible hosts file
+- Ansible.cfg (located, "/etc/ansible/"): Ansible configuration file
 
-- _Which file do you update to make Ansible run the playbook on a specific machine? The "/etc/ansible/hosts" file.
-
-ansible.cfg: #inventory      = /etc/ansible/hosts
-
-_How do I specify which machine to install the ELK server on versus which to install Filebeat on?
-
-filebeat-playbook.yml (hosts: webservers)
-and
-install-elk-playbook.yml (hosts: hosts: elk)
+Misc:
 
 - _Which URL do you navigate to in order to check that the ELK server is running?
 
 -- URL (Where the IP is the Elk-VM01 virtual machine public IP): http://20.25.84.179:5601/app/kibana
 
-_As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
+_The specific commands to download the playbook, update the files, etc._
 
-(1) run ansible-playbook /etc/ansible/roles/filebeat-playbook.yml
-and
-(2) run ansible-playbook /etc/ansible/roles/metricbeat-playbook.yml
+- (1) run ansible-playbook /etc/ansible/roles/filebeat-playbook.yml
+- (2) run ansible-playbook /etc/ansible/roles/metricbeat-playbook.yml
