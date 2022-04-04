@@ -18,17 +18,13 @@ This document contains the following details:
 
 ### Description of the Topology
 
-The main purpose of this network is to expose a load-balanced and monitored instance of DVWA, the D*mn Vulnerable Web Application.
+The main purpose of this network is to expose a load-balanced and monitored instance of DVWA, the D*mn Vulnerable Web Application. Load balancing ensures that the application will be highly available, in addition to restricting traffic to the network. Furthermore, it protects a network against distributed denial-of-service (DDoS) attacks, ensuring one of the three components of the C.I.A Triad: Availability.
 
-Load balancing ensures that the application will be highly AVAILABLE, in addition to restricting TRAFFIC to the network.
+A "jump box" permits segmentation between administrative functions of the network. And with the use of SSH Key Pair Authentication, the "jump box" secures and limits administrative authentication to the network.
 
-Balancing traffic protects a network against distributed denial-of-service (DDoS) attacks ensuring one of the three components of the C.I.A Triad: Availability.
+An ELK Stack implementation facilitates log analysis and application and system performance analytics:
 
-A "jump box" permits segmentation between administrative functions of the network; with the use of SSH Key Pair Authentication, the "jump box" secures and limits administrative authentication to the network.
-
-Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the LOGS and SYSTEM METRICS.
-
--- Metricbeat collects metrics on the Operating System and running services (e.g., CPU (docker, system, etc.), Memory, HTTP traffic, etc.).
+-- Metricbeat collects metrics on the Operating System and running services (e.g., CPU, Memory, HTTP traffic, etc.).
 -- Filebeat is an agent that serves as a log aggregator that in this network ingests logs to Elasticsearch.
 
 The configuration details of each machine may be found below.
@@ -44,17 +40,9 @@ The configuration details of each machine may be found below.
 
 The machines on the internal network are not exposed to the public Internet.
 
-Only the JUMP BOX and ELK-VM01 virtual machines can accept connections from the Internet. Access to this machine is only allowed from the following
-
-IP addresses:
-
-67.176.130.63 (i.e., "the internet/home host public ip") 
-and 
-13.91.134.90 (i.e., "the Load Balancer's Public, Frontend IP")
-
-
 Machines within the network can only be accessed in accordance to Inbound Security Rules defined within the Network Security Groups.
 
+Only the JUMP BOX is permitted remote login and command line execution from the Internet. Access to this machine is enforced by Azure's Network Security Group to allow connections only from IP addresses: 67.176.130.63 (i.e., "the internet/home host public ip"). 
 
 A summary of the access policies in place can be found in the table below.
 
@@ -66,11 +54,9 @@ A summary of the access policies in place can be found in the table below.
 
 ### Elk Configuration
 
-Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because...
+Ansible automated the configuration of the ELK Stack setu-up and the DVWA web server environment, providing a scalable standardization of settings and versions.
 
-The main advantage of automating configurations with Ansible is that you allow for a scalable standardization of settings and versions.
-
-The playbook implements the following tasks:
+The Elk playbook orchestrates the following tasks:
 
 - ... Installs Docker
 - ... Installs Python 3.0
@@ -84,26 +70,9 @@ The following screenshot displays the result of running `docker ps` after succes
 \ElkDockerPS
 
 ### Target Machines & Beats
-This ELK server is configured to monitor the following machines:
-
-As defined in the
-
-\roles
-metricbeat-playbook.yml (hosts: webservers)
-and
-filebeat-playbook.yml (hosts: webservers)
-
-and in
-
-/etc/ansible/hosts:
+The ELK server is configured to monitor:
 
 [webservers]
-10.0.0.5 ansible_python_interpreter=/usr/bin/python3
-10.0.0.6 ansible_python_interpreter=/usr/bin/python3
-10.0.0.7 ansible_python_interpreter=/usr/bin/python3
-
-We have installed the following Beats on these machines:
-
 10.0.0.5 Web-1
 10.0.0.6 Web-2
 10.0.0.7 Web-3
