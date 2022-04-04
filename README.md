@@ -62,14 +62,15 @@ The Elk playbook orchestrates the following tasks:
 
 Target Machines & Beats
 
+With Filebeat and Metricbeat we can analyze spikes in CPU utilization for example. We can also analyze visual representations of granular details on HTTP traffic patterns, from country destinations to the types Operating Systems accessing web servers.
+
 The ELK server is configured to monitor:
 
 [webservers]
-10.0.0.5 Web-1
-10.0.0.6 Web-2
-10.0.0.7 Web-3
 
-With Filebeat and Metricbeat we can analyze spikes in CPU utilization for example. We can also analyze visual representations of granular details on HTTP traffic patterns, from country destinations to the types Operating Systems accessing web servers.
+- 10.0.0.5 Web-1
+- 10.0.0.6 Web-2
+- 10.0.0.7 Web-3
 
 ### Using the Playbook
 In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned:
